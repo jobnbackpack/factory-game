@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://du6ap6182ghhd"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_huxh5"]
+[ext_resource type="Texture2D" uid="uid://c3248r1kl7w7n" path="res://assets/sprites/game brainstorm.png" id="2_iyap0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xyno"]
+atlas = ExtResource("2_iyap0")
+region = Rect2(992, 992, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_42667"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xyno")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ly42d"]
+height = 32.0
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_huxh5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_42667")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+shape = SubResource("CapsuleShape2D_ly42d")
