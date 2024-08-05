@@ -1,33 +1,45 @@
-[gd_scene load_steps=6 format=3 uid="uid://du6ap6182ghhd"]
+[gd_scene load_steps=7 format=3 uid="uid://du6ap6182ghhd"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_huxh5"]
-[ext_resource type="Texture2D" uid="uid://c3248r1kl7w7n" path="res://assets/sprites/game brainstorm.png" id="2_iyap0"]
+[ext_resource type="Texture2D" uid="uid://cj3rb1h1qd3rp" path="res://assets/sprites/Sam.png" id="2_lhjfi"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5xyno"]
-atlas = ExtResource("2_iyap0")
-region = Rect2(992, 992, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfgx0"]
+atlas = ExtResource("2_lhjfi")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnhy8"]
+atlas = ExtResource("2_lhjfi")
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_42667"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5xyno")
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_yfgx0")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_xnhy8")
 }],
 "loop": true,
-"name": &"default",
-"speed": 5.0
+"name": &"idle",
+"speed": 12.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ly42d"]
-height = 32.0
+radius = 4.0
+height = 8.0
 
-[node name="player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 3
 script = ExtResource("1_huxh5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -16)
+position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_42667")
+animation = &"idle"
+autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -16)
+y_sort_enabled = true
+position = Vector2(0, -3)
 shape = SubResource("CapsuleShape2D_ly42d")

@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5lba2p8xde4"]
+
+[ext_resource type="Texture2D" uid="uid://b8jq75r815nhu" path="res://assets/sprites/fantasy/forest_/forest_ [resources].png" id="1_2chlq"]
+[ext_resource type="Script" path="res://scripts/stone_node.gd" id="1_88x32"]
+[ext_resource type="PackedScene" uid="uid://36vko88q4aph" path="res://interaction/interaction area/interaction_area.tscn" id="2_82fph"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4marh"]
+height = 20.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ci5p"]
+radius = 26.0
+
+[node name="StoneNode" type="StaticBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_88x32")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2chlq")
+region_enabled = true
+region_rect = Rect2(32, 48, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_4marh")
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_82fph")]
+action_name = "hit"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_4ci5p")
+debug_color = Color(0.213985, 0.606386, 0.57358, 0.42)
