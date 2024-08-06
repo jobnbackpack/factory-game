@@ -18,7 +18,15 @@ config/icon="res://icon.svg"
 [autoload]
 
 InteractionManager="*res://interaction/InteractionManager.tscn"
-LevelManager="*res://00_Globals/GlobalLevelManager.gd"
+LevelManager="*res://00_globals/GlobalLevelManager.gd"
+
+[display]
+
+window/size/viewport_width=480
+window/size/viewport_height=270
+window/size/window_width_override=1920
+window/size/window_height_override=1080
+window/stretch/mode="viewport"
 
 [input]
 

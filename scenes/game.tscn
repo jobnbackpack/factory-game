@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://bnd53811p3hgi"]
 
-[ext_resource type="PackedScene" uid="uid://du6ap6182ghhd" path="res://scenes/player.tscn" id="1_iw2jv"]
+[ext_resource type="PackedScene" uid="uid://du6ap6182ghhd" path="res://player/player.tscn" id="1_iw2jv"]
 [ext_resource type="Texture2D" uid="uid://cii5vkuxqskwg" path="res://assets/sprites/fantasy/forest_/forest_.png" id="2_7g360"]
 [ext_resource type="Script" path="res://scripts/PlayerCamera.gd" id="2_ktnaq"]
 [ext_resource type="Texture2D" uid="uid://b8jq75r815nhu" path="res://assets/sprites/fantasy/forest_/forest_ [resources].png" id="3_kdy6c"]
