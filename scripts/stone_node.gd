@@ -1,9 +1,9 @@
 extends StaticBody2D
 
-@onready var interaction_area = $InteractionArea
+@onready var hit_box = $HitBox
 
 func _ready():
-	$HitBox.Damaged.connect(TakeDamage)
+	hit_box.Damaged.connect(TakeDamage)
 
 func TakeDamage(_damage: int) -> void:
 	queue_free() 

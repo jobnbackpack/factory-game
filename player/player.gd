@@ -1,9 +1,7 @@
 class_name Player extends CharacterBody2D
 
-@onready var hurt_box: HurtBox = $Interactions/HurtBox
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-
 var cardinal_direction: Vector2 = Vector2.DOWN
+const DIR_4 = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
 var direction: Vector2 = Vector2.ZERO
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -25,15 +23,12 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func SetDirection() -> bool:
-	var new_dir: Vector2 = cardinal_direction
 	if direction == Vector2.ZERO:
 		return false
-	
-	if direction.y == 0:
-		new_dir = Vector2.LEFT if direction.x < 0 else Vector2.RIGHT
-	elif direction.x == 0:
-		new_dir = Vector2.UP if direction.y < 0 else Vector2.DOWN
-		
+
+	var direction_id: int = int(round((direction + cardinal_direction * 0.1).angle() / TAU * DIR_4.size()))
+	var new_dir = DIR_4[direction_id]
+
 	if new_dir == cardinal_direction:
 		return false
 	
@@ -53,11 +48,4 @@ func AnimDirection() -> String:
 		return "up"
 	else:
 		return "side"
-	
-func _input(event: InputEvent):
-	if event.is_action("attack"):
-		await get_tree().create_timer(0.075).timeout
-		hurt_box.monitoring = true
-		await get_tree().create_timer(0.075).timeout
-		hurt_box.monitoring = false
 	

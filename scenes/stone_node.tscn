@@ -7,7 +7,7 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4marh"]
 height = 20.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_k5y4f"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_5ioan"]
 
 [node name="StoneNode" type="StaticBody2D"]
 collision_layer = 16
@@ -20,6 +20,8 @@ texture = ExtResource("1_2chlq")
 region_enabled = true
 region_rect = Rect2(32, 48, 32, 32)
 
+[node name="AttackEffectsSprite" type="Sprite2D" parent="Sprite2D"]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -9)
 shape = SubResource("CapsuleShape2D_4marh")
@@ -28,5 +30,5 @@ shape = SubResource("CapsuleShape2D_4marh")
 position = Vector2(0, -11)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-shape = SubResource("CircleShape2D_k5y4f")
+shape = SubResource("CircleShape2D_5ioan")
 debug_color = Color(0.598218, 0.467331, 0.737916, 0.42)
