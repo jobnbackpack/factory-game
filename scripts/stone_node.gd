@@ -3,7 +3,7 @@ extends StaticBody2D
 @onready var hit_box = $HitBox
 
 func _ready():
-	hit_box.Damaged.connect(TakeDamage)
+	hit_box.damaged.connect(take_damage)
 
-func TakeDamage(_damage: int) -> void:
+func take_damage(_hurt_box: HurtBox) -> void:
 	queue_free() 

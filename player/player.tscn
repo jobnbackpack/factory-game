@@ -1,13 +1,15 @@
-[gd_scene load_steps=22 format=3 uid="uid://du6ap6182ghhd"]
+[gd_scene load_steps=32 format=3 uid="uid://du6ap6182ghhd"]
 
-[ext_resource type="Script" path="res://player/player.gd" id="1_yh1tc"]
+[ext_resource type="Script" path="res://player/scripts/player.gd" id="1_5wysq"]
 [ext_resource type="PackedScene" uid="uid://ihltf1wjtmvw" path="res://common/HurtBox.tscn" id="3_8s2fu"]
-[ext_resource type="Script" path="res://interaction/InteractionHost.gd" id="3_a0s21"]
 [ext_resource type="Texture2D" uid="uid://b8xaajyg0mby8" path="res://assets/sprites/player/player-Sheet.png" id="4_0lw6g"]
-[ext_resource type="Script" path="res://player/player_state_machine.gd" id="5_fqasr"]
-[ext_resource type="Script" path="res://player/state_idle.gd" id="6_7n4qn"]
-[ext_resource type="Script" path="res://player/state_walk.gd" id="7_lmhyv"]
-[ext_resource type="Script" path="res://player/state_attack.gd" id="8_wmh8j"]
+[ext_resource type="Script" path="res://player/scripts/player_state_machine.gd" id="4_4ryut"]
+[ext_resource type="Script" path="res://player/scripts/states/state_idle.gd" id="5_bicxu"]
+[ext_resource type="Script" path="res://player/scripts/states/state_walk.gd" id="6_1tmc5"]
+[ext_resource type="Script" path="res://player/scripts/states/state_attack.gd" id="7_eaypq"]
+[ext_resource type="Script" path="res://interaction/interaction_host.gd" id="8_40vju"]
+[ext_resource type="Script" path="res://player/scripts/states/state_stun.gd" id="8_ac37m"]
+[ext_resource type="PackedScene" uid="uid://cxu8vna73xew1" path="res://common/HitBox.tscn" id="9_a7qur"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ly42d"]
 radius = 4.0
@@ -229,6 +231,54 @@ tracks/0/keys = {
 "values": [2, 3, 4, 5]
 }
 
+[sub_resource type="Animation" id="Animation_khi1l"]
+resource_name = "stun_down"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_u50lx"]
+resource_name = "stun_up"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_8uxbm"]
+resource_name = "stun_side"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nkobm"]
 _data = {
 "RESET": SubResource("Animation_r631m"),
@@ -238,14 +288,73 @@ _data = {
 "idle_down": SubResource("Animation_7k744"),
 "idle_side": SubResource("Animation_q1cuo"),
 "idle_up": SubResource("Animation_adpcl"),
+"stun_down": SubResource("Animation_khi1l"),
+"stun_side": SubResource("Animation_8uxbm"),
+"stun_up": SubResource("Animation_u50lx"),
 "walk_down": SubResource("Animation_d44l4"),
 "walk_side": SubResource("Animation_1ush1"),
 "walk_up": SubResource("Animation_i5mpw")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_slesk"]
+radius = 4.0
+height = 12.0
+
+[sub_resource type="Animation" id="Animation_nadop"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jgk54"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kpmls"]
+resource_name = "damaged"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.0980392), Color(1, 1, 1, 1), Color(1, 1, 1, 0.196078), Color(1, 1, 1, 1), Color(1, 1, 1, 0.392157), Color(1, 1, 1, 1), Color(1, 1, 1, 0.588235), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sn6v6"]
+_data = {
+"RESET": SubResource("Animation_jgk54"),
+"damaged": SubResource("Animation_kpmls"),
+"default": SubResource("Animation_nadop")
+}
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 16
-script = ExtResource("1_yh1tc")
+script = ExtResource("1_5wysq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 y_sort_enabled = true
@@ -267,7 +376,7 @@ collision_mask = 256
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/AttackHurtBox"]
-position = Vector2(0, -5)
+position = Vector2(0.002393, -7.9)
 shape = SubResource("CircleShape2D_ctp1a")
 debug_color = Color(0.769007, 0.389229, 0.574808, 0.42)
 
@@ -277,18 +386,33 @@ libraries = {
 }
 
 [node name="StateMachine" type="Node" parent="."]
-script = ExtResource("5_fqasr")
+script = ExtResource("4_4ryut")
 
 [node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource("6_7n4qn")
+script = ExtResource("5_bicxu")
 
 [node name="Walk" type="Node" parent="StateMachine"]
-script = ExtResource("7_lmhyv")
+script = ExtResource("6_1tmc5")
 
 [node name="Attack" type="Node" parent="StateMachine"]
-script = ExtResource("8_wmh8j")
+script = ExtResource("7_eaypq")
+
+[node name="Stun" type="Node" parent="StateMachine"]
+script = ExtResource("8_ac37m")
 
 [node name="Interactions" type="Node2D" parent="."]
 position = Vector2(0, -6)
 rotation = -0.000302911
-script = ExtResource("3_a0s21")
+script = ExtResource("8_40vju")
+
+[node name="HitBox" parent="." instance=ExtResource("9_a7qur")]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, -7)
+shape = SubResource("CapsuleShape2D_slesk")
+
+[node name="EffectAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sn6v6")
+}
