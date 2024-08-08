@@ -15,7 +15,8 @@ func enter() -> void:
 	animation_player.animation_finished.connect(end_attack)
 	
 	await get_tree().create_timer(0.075).timeout
-	hurt_box.monitoring = true
+	if attacking:
+		hurt_box.monitoring = true
 	pass
 	
 ## What happens when the player exits this State?

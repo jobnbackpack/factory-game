@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://du6ap6182ghhd"]
+[gd_scene load_steps=33 format=3 uid="uid://du6ap6182ghhd"]
 
 [ext_resource type="Script" path="res://player/scripts/player.gd" id="1_5wysq"]
 [ext_resource type="PackedScene" uid="uid://ihltf1wjtmvw" path="res://common/HurtBox.tscn" id="3_8s2fu"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://interaction/interaction_host.gd" id="8_40vju"]
 [ext_resource type="Script" path="res://player/scripts/states/state_stun.gd" id="8_ac37m"]
 [ext_resource type="PackedScene" uid="uid://cxu8vna73xew1" path="res://common/HitBox.tscn" id="9_a7qur"]
+[ext_resource type="Script" path="res://player/scripts/player_camera.gd" id="11_dd31k"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ly42d"]
 radius = 4.0
@@ -180,6 +181,54 @@ tracks/0/keys = {
 "values": [0, 1]
 }
 
+[sub_resource type="Animation" id="Animation_khi1l"]
+resource_name = "stun_down"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_8uxbm"]
+resource_name = "stun_side"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_u50lx"]
+resource_name = "stun_up"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_d44l4"]
 resource_name = "walk_down"
 length = 0.35
@@ -231,54 +280,6 @@ tracks/0/keys = {
 "values": [2, 3, 4, 5]
 }
 
-[sub_resource type="Animation" id="Animation_khi1l"]
-resource_name = "stun_down"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_u50lx"]
-resource_name = "stun_up"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_8uxbm"]
-resource_name = "stun_side"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nkobm"]
 _data = {
 "RESET": SubResource("Animation_r631m"),
@@ -299,21 +300,6 @@ _data = {
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_slesk"]
 radius = 4.0
 height = 12.0
-
-[sub_resource type="Animation" id="Animation_nadop"]
-resource_name = "default"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_jgk54"]
 length = 0.001
@@ -345,6 +331,21 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.0980392), Color(1, 1, 1, 1), Color(1, 1, 1, 0.196078), Color(1, 1, 1, 1), Color(1, 1, 1, 0.392157), Color(1, 1, 1, 1), Color(1, 1, 1, 0.588235), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_nadop"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sn6v6"]
 _data = {
 "RESET": SubResource("Animation_jgk54"),
@@ -355,6 +356,9 @@ _data = {
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 16
 script = ExtResource("1_5wysq")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("11_dd31k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 y_sort_enabled = true

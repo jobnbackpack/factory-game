@@ -1,0 +1,123 @@
+[gd_scene load_steps=8 format=3 uid="uid://dj3cqtywmp84w"]
+
+[ext_resource type="Script" path="res://gui/pause_menu/pause_menu.gd" id="1_4kmlf"]
+[ext_resource type="Texture2D" uid="uid://421ga1s5usj7" path="res://assets/sprites/items/items.png" id="2_cit5q"]
+[ext_resource type="PackedScene" uid="uid://dw7ryadt7du2l" path="res://gui/pause_menu/inventory/inventory_slot.tscn" id="3_cjuil"]
+[ext_resource type="Script" path="res://gui/pause_menu/inventory/scripts/inventory_ui.gd" id="3_v1jtg"]
+[ext_resource type="Resource" uid="uid://dpktmafhxo7ei" path="res://gui/pause_menu/inventory/player_inventory.tres" id="4_yhaps"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5fah"]
+atlas = ExtResource("2_cit5q")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7rywl"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 15.0
+texture = SubResource("AtlasTexture_n5fah")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_4kmlf")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_right = 492.0
+offset_bottom = 288.0
+color = Color(0.482353, 0.482353, 0.482353, 0.52549)
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = 58.0
+offset_right = -71.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ButtonSave" type="Button" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "Save"
+
+[node name="ButtonLoad" type="Button" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "Load"
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 15.0
+offset_right = 102.0
+offset_bottom = 38.0
+theme_override_colors/font_color = Color(0.838897, 0.838897, 0.838897, 1)
+text = "[paused]"
+horizontal_alignment = 1
+
+[node name="ItemDescription" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 124.0
+offset_right = 149.0
+offset_bottom = 155.0
+theme_override_colors/font_color = Color(0.838897, 0.838897, 0.838897, 1)
+theme_override_font_sizes/font_size = 10
+autowrap_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 58.0
+offset_right = 150.0
+offset_bottom = 115.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_7rywl")
+
+[node name="GridContainer" type="GridContainer" parent="Control/PanelContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+columns = 5
+script = ExtResource("3_v1jtg")
+data = ExtResource("4_yhaps")
+
+[node name="InventorySlot" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_cjuil")]
+layout_mode = 2
+
+[node name="InventorySlot7" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_cjuil")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_cjuil")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_cjuil")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_cjuil")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_cjuil")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_cjuil")]
+layout_mode = 2

@@ -1,8 +1,14 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://dbuom7qco46kc"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://dbuom7qco46kc"]
 
 [ext_resource type="Script" path="res://items/scripts/item_data.gd" id="1_6lwcl"]
+[ext_resource type="Texture2D" uid="uid://421ga1s5usj7" path="res://assets/sprites/items/items.png" id="2_gx7os"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbf88"]
+atlas = ExtResource("2_gx7os")
+region = Rect2(16, 0, 16, 16)
 
 [resource]
 script = ExtResource("1_6lwcl")
-name = "Stone"
-description = "a simple stone"
+name = "Gem"
+description = "a heavy sone"
+texture = SubResource("AtlasTexture_tbf88")

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=6 format=3 uid="uid://4teglddbe6yd"]
+
+[ext_resource type="Script" path="res://items/item_effects/item_effect_heal.gd" id="1_tf6n3"]
+[ext_resource type="Script" path="res://items/scripts/item_data.gd" id="1_xbedq"]
+[ext_resource type="Texture2D" uid="uid://421ga1s5usj7" path="res://assets/sprites/items/items.png" id="2_qeudh"]
+
+[sub_resource type="Resource" id="Resource_casne"]
+script = ExtResource("1_tf6n3")
+heal_amount = 1
+use_description = ""
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38ifr"]
+atlas = ExtResource("2_qeudh")
+region = Rect2(32, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_xbedq")
+name = "Potion"
+description = "heals "
+texture = SubResource("AtlasTexture_38ifr")
+effects = Array[Resource("res://items/item_effects/item_effect.gd")]([SubResource("Resource_casne")])
