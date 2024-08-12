@@ -34,7 +34,7 @@ mouse_cursor/custom_image="res://assets/sprites/effects/cursor.png"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot-vim/plugin.cfg")
+enabled=PackedStringArray("res://addons/gaea/plugin.cfg", "res://addons/godot-vim/plugin.cfg")
 
 [input]
 

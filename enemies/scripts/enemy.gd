@@ -38,7 +38,7 @@ func set_direction(_new_direction: Vector2) -> bool:
 		return false
 	
 	cardinal_direction = new_dir
-	sprite.scale.x = -1 if cardinal_direction == Vector2.RIGHT else 1
+	sprite.scale.x = 1 if cardinal_direction == Vector2.LEFT else -1
 	direction_changed.emit(cardinal_direction)
 	return true
 	

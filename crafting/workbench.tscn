@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://ulv4xrjn36xv"]
+
+[ext_resource type="Texture2D" uid="uid://bopbe8kc2xnvf" path="res://assets/sprites/Buildings.png" id="1_ceaxf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hv6ob"]
+size = Vector2(22, 6)
+
+[node name="Workbench" type="StaticBody2D"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 9)
+shape = SubResource("RectangleShape2D_hv6ob")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ceaxf")
+region_enabled = true
+region_rect = Rect2(128, 32, 32, 32)
