@@ -22,6 +22,8 @@ PlayerHud="*res://gui/player_hud/player_hud.tscn"
 PlayerManager="*res://00_globals/global_player_manager.gd"
 SaveManager="*res://00_globals/global_save_manager.gd"
 PauseMenu="*res://gui/pause_menu/pause_menu.tscn"
+InteractionManager="*res://interaction/InteractionManager.tscn"
+CraftingGui="*res://gui/inventory/crafting/CraftingGUI.tscn"
 
 [display]
 
@@ -88,6 +90,7 @@ pause={
 
 2d_physics/layer_1="Player"
 2d_physics/layer_2="PlayerHurt"
+2d_physics/layer_3="Interaction"
 2d_physics/layer_5="Walls"
 2d_physics/layer_9="Entity "
 

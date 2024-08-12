@@ -1,13 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://ulv4xrjn36xv"]
+[gd_scene load_steps=6 format=3 uid="uid://ulv4xrjn36xv"]
 
 [ext_resource type="Texture2D" uid="uid://bopbe8kc2xnvf" path="res://assets/sprites/Buildings.png" id="1_ceaxf"]
+[ext_resource type="Script" path="res://crafting/workbench.gd" id="1_ikh3v"]
+[ext_resource type="PackedScene" uid="uid://36vko88q4aph" path="res://interaction/interaction area/interaction_area.tscn" id="2_ectak"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hv6ob"]
 size = Vector2(22, 6)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_lk40e"]
+radius = 22.0
+
 [node name="Workbench" type="StaticBody2D"]
 collision_layer = 16
 collision_mask = 0
+script = ExtResource("1_ikh3v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 9)
@@ -17,3 +23,10 @@ shape = SubResource("RectangleShape2D_hv6ob")
 texture = ExtResource("1_ceaxf")
 region_enabled = true
 region_rect = Rect2(128, 32, 32, 32)
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_ectak")]
+action_name = "open"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_lk40e")

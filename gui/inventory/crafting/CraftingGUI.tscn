@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://f485cnyrqys0"]
+
+[ext_resource type="Script" path="res://gui/inventory/crafting/CraftingGUI.gd" id="1_hjrm6"]
+
+[node name="CraftingGui" type="CanvasLayer"]
+script = ExtResource("1_hjrm6")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.176471)
+
+[node name="ColorRect2" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 59.0
+offset_right = 187.0
+offset_bottom = 201.0
+
+[node name="ColorRect3" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = 209.0
+offset_top = 22.0
+offset_right = 416.0
+offset_bottom = 201.0
+
+[node name="ColorRect4" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = 209.0
+offset_top = 214.0
+offset_right = 416.0
+offset_bottom = 253.0
+
+[node name="ColorRect5" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = 426.0
+offset_top = 22.0
+offset_right = 460.0
+offset_bottom = 201.0
