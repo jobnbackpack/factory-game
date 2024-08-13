@@ -12,3 +12,4 @@ script = ExtResource("1_6lwcl")
 name = "Gem"
 description = "a heavy sone"
 texture = SubResource("AtlasTexture_tbf88")
+effects = Array[Resource("res://items/item_effects/item_effect.gd")]([])

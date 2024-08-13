@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://37v526mckusx" path="res://assets/sprites/effects/destroy-Sheet.png" id="8_idkbj"]
 [ext_resource type="Script" path="res://enemies/scripts/states/enemy_state_destroy.gd" id="9_2dco1"]
 [ext_resource type="Resource" uid="uid://dbuom7qco46kc" path="res://items/gem.tres" id="10_qr4io"]
-[ext_resource type="Script" path="res://enemies/scripts/drop_data.gd" id="11_e1lfe"]
+[ext_resource type="Script" path="res://common/drop_data.gd" id="11_e1lfe"]
 [ext_resource type="Resource" uid="uid://4teglddbe6yd" path="res://items/potion.tres" id="12_dbub7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g0xof"]
