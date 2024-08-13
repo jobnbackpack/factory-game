@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="RecipeListData" load_steps=13 format=3 uid="uid://cawusreubgyk4"]
+
+[ext_resource type="Script" path="res://gui/inventory/crafting/scripts/recipe_data.gd" id="1_7yojo"]
+[ext_resource type="Resource" uid="uid://c8q7aw15tx2us" path="res://items/stone.tres" id="1_nljgd"]
+[ext_resource type="Script" path="res://gui/inventory/crafting/scripts/ingredient_data.gd" id="2_iw7x3"]
+[ext_resource type="Resource" uid="uid://b17wl2tg5ct8w" path="res://items/tools/pickaxe.tres" id="3_2hhqe"]
+[ext_resource type="Resource" uid="uid://dbuom7qco46kc" path="res://items/gem.tres" id="4_l36d6"]
+[ext_resource type="Script" path="res://gui/inventory/crafting/scripts/recipe_list_data.gd" id="5_ofe50"]
+[ext_resource type="Resource" uid="uid://bqefp8ntr1m8l" path="res://items/tools/sword.tres" id="6_ibxq7"]
+
+[sub_resource type="Resource" id="Resource_caurm"]
+script = ExtResource("2_iw7x3")
+item = ExtResource("1_nljgd")
+amount = 3
+
+[sub_resource type="Resource" id="Resource_d4rdc"]
+script = ExtResource("1_7yojo")
+label = "Pickaxe"
+ingredients = Array[ExtResource("2_iw7x3")]([SubResource("Resource_caurm")])
+crafting_time = 3.0
+result_item = ExtResource("3_2hhqe")
+
+[sub_resource type="Resource" id="Resource_ja1jt"]
+script = ExtResource("2_iw7x3")
+item = ExtResource("1_nljgd")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_wqtcj"]
+script = ExtResource("2_iw7x3")
+item = ExtResource("4_l36d6")
+amount = 3
+
+[sub_resource type="Resource" id="Resource_0tmri"]
+script = ExtResource("1_7yojo")
+label = "Sword"
+ingredients = Array[ExtResource("2_iw7x3")]([SubResource("Resource_ja1jt"), SubResource("Resource_wqtcj")])
+crafting_time = 5.0
+result_item = ExtResource("6_ibxq7")
+
+[resource]
+script = ExtResource("5_ofe50")
+recipes = Array[ExtResource("1_7yojo")]([SubResource("Resource_d4rdc"), SubResource("Resource_0tmri")])

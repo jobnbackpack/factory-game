@@ -2,6 +2,7 @@ extends Node
 
 const PLAYER = preload("res://player/player.tscn")
 const INVENTORY_DATA: InventoryData = preload("res://gui/pause_menu/inventory/player_inventory.tres")
+const RECIPES: RecipeListData = preload("res://gui/inventory/crafting/recipes.tres")
 
 var player: Player 
 var player_spawned: bool = false

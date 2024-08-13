@@ -1,7 +1,14 @@
-[gd_resource type="Resource" script_class="InventoryData" load_steps=2 format=3 uid="uid://dpktmafhxo7ei"]
+[gd_resource type="Resource" script_class="InventoryData" load_steps=5 format=3 uid="uid://dpktmafhxo7ei"]
 
 [ext_resource type="Script" path="res://gui/pause_menu/inventory/scripts/inventory_data.gd" id="1_w16jg"]
+[ext_resource type="Script" path="res://gui/pause_menu/inventory/scripts/slot_data.gd" id="3_ul76x"]
+[ext_resource type="Resource" uid="uid://c8q7aw15tx2us" path="res://items/stone.tres" id="5_iteux"]
+
+[sub_resource type="Resource" id="Resource_k4jwe"]
+script = ExtResource("3_ul76x")
+item_data = ExtResource("5_iteux")
+quantity = 3
 
 [resource]
 script = ExtResource("1_w16jg")
-slots = Array[Resource("res://gui/pause_menu/inventory/scripts/slot_data.gd")]([null, null, null, null, null, null, null, null, null, null])
+slots = Array[ExtResource("3_ul76x")]([SubResource("Resource_k4jwe"), null, null, null, null, null, null, null, null, null])

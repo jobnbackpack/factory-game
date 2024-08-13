@@ -1,12 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dj3cqtywmp84w"]
+[gd_scene load_steps=6 format=3 uid="uid://dj3cqtywmp84w"]
 
 [ext_resource type="Script" path="res://gui/pause_menu/pause_menu.gd" id="1_4kmlf"]
 [ext_resource type="Texture2D" uid="uid://421ga1s5usj7" path="res://assets/sprites/items/items.png" id="2_cit5q"]
-[ext_resource type="PackedScene" uid="uid://dw7ryadt7du2l" path="res://gui/pause_menu/inventory/inventory_slot.tscn" id="3_cjuil"]
-[ext_resource type="Script" path="res://gui/pause_menu/inventory/scripts/inventory_ui.gd" id="3_v1jtg"]
-[ext_resource type="Resource" uid="uid://dpktmafhxo7ei" path="res://gui/pause_menu/inventory/player_inventory.tres" id="4_yhaps"]
+[ext_resource type="PackedScene" uid="uid://dj4na47u1acof" path="res://gui/pause_menu/inventory/inventory_grid.tscn" id="3_hbttj"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n5fah"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vns35"]
 atlas = ExtResource("2_cit5q")
 region = Rect2(48, 0, 16, 16)
 
@@ -15,7 +13,7 @@ content_margin_left = 10.0
 content_margin_top = 10.0
 content_margin_right = 20.0
 content_margin_bottom = 15.0
-texture = SubResource("AtlasTexture_n5fah")
+texture = SubResource("AtlasTexture_vns35")
 texture_margin_left = 10.0
 texture_margin_top = 10.0
 texture_margin_right = 10.0
@@ -93,31 +91,5 @@ offset_right = 150.0
 offset_bottom = 115.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_7rywl")
 
-[node name="GridContainer" type="GridContainer" parent="Control/PanelContainer"]
-layout_mode = 2
-theme_override_constants/h_separation = 16
-theme_override_constants/v_separation = 16
-columns = 5
-script = ExtResource("3_v1jtg")
-data = ExtResource("4_yhaps")
-
-[node name="InventorySlot" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_cjuil")]
-layout_mode = 2
-
-[node name="InventorySlot7" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_cjuil")]
-layout_mode = 2
-
-[node name="InventorySlot2" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_cjuil")]
-layout_mode = 2
-
-[node name="InventorySlot3" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_cjuil")]
-layout_mode = 2
-
-[node name="InventorySlot4" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_cjuil")]
-layout_mode = 2
-
-[node name="InventorySlot5" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_cjuil")]
-layout_mode = 2
-
-[node name="InventorySlot6" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_cjuil")]
+[node name="GridContainer" parent="Control/PanelContainer" instance=ExtResource("3_hbttj")]
 layout_mode = 2

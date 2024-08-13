@@ -9,6 +9,8 @@ var focus_index: int = 0
 func _ready():
 	PauseMenu.shown.connect(update_inventory)
 	PauseMenu.hidden.connect(clear_inventory)
+	CraftingGui.shown.connect(update_inventory)
+	CraftingGui.hidden.connect(clear_inventory)
 	clear_inventory()
 	data.changed.connect(on_inventory_changed)
 	pass

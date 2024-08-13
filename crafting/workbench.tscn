@@ -30,3 +30,4 @@ action_name = "open"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_lk40e")
+debug_color = Color(0.271132, 0.622184, 0.335393, 0.42)

@@ -19,14 +19,14 @@ func slot_changed() -> void:
 				s.changed.disconnect(slot_changed)
 				var index = slots.find(s)
 				slots[index] = null
-				emit_changed()
-	pass
+	emit_changed()
 
 func add_item(item: ItemData, count: int = 1) -> bool:
 	for s in slots:
 		if s:
 			if s.item_data == item:
 				s.quantity += count
+				slot_changed()
 				return true
 	
 	for i in slots.size():
@@ -36,6 +36,7 @@ func add_item(item: ItemData, count: int = 1) -> bool:
 			new.quantity = count
 			slots[i] = new
 			new.changed.connect(slot_changed)
+			slot_changed()
 			return true
 			
 	print("inventory was full")
